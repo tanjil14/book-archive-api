@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Archive</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+  </head>
+  <body>
+    <main class="bg-gray container">
+      <!-- search box section -->
+      <section class="search-box my-4">
+        <h3 class="text-center text-info">Search your favorite book!</h3>
+        <!-- search input  -->
+        <div class="input-group mb-3 mx-auto w-50 my-3">
+          <input id="input-box" type="text" class="form-control" placeholder="Enter your book name" />
+          <button onclick="getBooks()" class="btn btn-outline-primary" type="button">Search</button>
+        </div>
+
+        <!-- loader div  -->
+        <div id="loader" class="text-center">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+
+        <!-- error message  -->
+        <div id="error-box">
+          <h5 class="text-center">No Results Found!</h5>
+        </div>
+      </section>
+
+      <!-- show search results -->
+      <section class="search-results">
+        <!-- total results found -->
+        <div id="total-results"></div>
+
+        <!-- show founds results  -->
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="all-results">
+        </div>
+      </section>
+    </main>
+    <script src="main.js"></script>
+  </body>
+</html>
