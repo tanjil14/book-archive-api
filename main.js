@@ -66,25 +66,24 @@ const displayResults = (results) => {
       const div = document.createElement("div");
       div.classList.add("col");
       div.innerHTML = ` <div class="card h-100">
-     <!-- by default images not found id 10909258-->
-      <img src="https://covers.openlibrary.org/b/id/${result.cover_i ? result.cover_i : "10909258"}-M.jpg" class="card-img-top" alt="Image" />
-      <div class="card-body">
+     <!--if images not found  by default id 10909258 is work-->
+      <img src="https://covers.openlibrary.org/b/id/${result.cover_i ? result.cover_i : "10909258"}-M.jpg" class="card-img-top" height="350" alt="Image" />
+      <div class="card-body text-dark bg-light shadow-sm">
         <dl class="row">
-          <dt class="col-sm-4">BookName:</dt>
-          <dd class="col-sm-8">${result.title}</dd>
-
-          <dt class="col-sm-4">Author:</dt>
-          <dd class="col-sm-8">${result.author_name ? result.author_name[0] : "Author not found"}</dd>
-
-          <dt class="col-sm-4">Publisher:</dt>
-          <dd class="col-sm-8">${result.publisher ? result.publisher[0] : "Author not found"}</dd>
-
-          <dt class="col-sm-6">Publication Date:</dt>
-          <dd class="col-sm-6">${result.publish_date ? result.publish_date[0] : "Published date not found"}</dd>
-
-          <dt class="col-sm-6">First Publish Year:</dt>
-          <dd class="col-sm-6">${result.first_publish_year ? result.first_publish_year : " Date not found"}</dd>
-        </dl>
+          <dt class="col-md-5">BookName:</dt>
+          <dd class="col-md-7">${result.title}</dd>
+          <dt class="col-md-5">Author:</dt>
+          <dd class="col-md-7">${result.author_name ? result.author_name[0] : "Author not found"}</dd>
+          <hr />
+          <dt class="col-md-5">Publisher:</dt>
+          <dd class="col-md-7">${result.publisher ? result.publisher[0] : "Publisher not found"}</dd>
+          <hr />
+          <dt class="col-md-5">Publication Date:</dt>
+          <dd class="col-md-7">${result.publish_date ? result.publish_date[0] : "Published date not found"}</dd>
+          <hr />
+          <dt class="col-md-5">First Publish Year:</dt>
+          <dd class="col-md-7">${result.first_publish_year ? result.first_publish_year : " Date not found"}</dd>
+          </dl>
       </div>
     </div>`;
       allResultsDiv.appendChild(div);
