@@ -14,7 +14,8 @@ const getBooks = () => {
   const errorBox = document.getElementById("error-box");
   //   check is input empty
   if (searchText === "") {
-    errorBox.innerHTML = `<h5 class='text-center'>You didn't enter any book</h5>`;
+    errorBox.innerHTML = `<h5 class='text-center'>You didn't enter any book!</h5>`;
+    toggleSearchResult("none");
   } else {
     //   clear error msg
     errorBox.textContent = "";
@@ -43,8 +44,14 @@ const loadData = async (searchText) => {
 };
 // display total number of found
 const displayTotalNum = (totalResults) => {
-  document.getElementById("total-results").innerHTML = `
-<h6>About ${totalResults.numFound} Results</h6>`;
+  const resultsDiv = document.getElementById("total-results");
+  if (totalResults.numFound === 0) {
+    resultsDiv.innerHTML = `
+    <h4 class="text-center">No data has been found!</h4>`;
+  } else {
+    resultsDiv.innerHTML = `
+    <h6>About ${totalResults.numFound} Results</h6>`;
+  }
 };
 
 //  display books info
@@ -54,22 +61,26 @@ const displayResults = (results) => {
   allResultsDiv.textContent = "";
   // traverse all data in array
   results.forEach((result, index) => {
-    //   handle load all data on ui,just load 30
+    //   handle load all data on ui,just load on 30
     if (index < 30) {
       const div = document.createElement("div");
       div.classList.add("col");
       div.innerHTML = ` <div class="card h-100">
-      <img src="https://covers.openlibrary.org/b/id/${result.cover_i}-M.jpg" class="card-img-top" alt="Image" />
+     <!-- by default images not found id 10909258-->
+      <img src="https://covers.openlibrary.org/b/id/${result.cover_i ? result.cover_i : "10909258"}-M.jpg" class="card-img-top" alt="Image" />
       <div class="card-body">
         <dl class="row">
           <dt class="col-sm-4">BookName:</dt>
           <dd class="col-sm-8">${result.title}</dd>
 
           <dt class="col-sm-4">Author:</dt>
-          <dd class="col-sm-8">${result.author_name ? result.author_name : "Author not found"}</dd>
+          <dd class="col-sm-8">${result.author_name ? result.author_name[0] : "Author not found"}</dd>
 
-          <dt class="col-sm-4">Publication Date:</dt>
-          <dd class="col-sm-8">${result.publish_date ? result.publish_date : "Published date not found"}</dd>
+          <dt class="col-sm-4">Publisher:</dt>
+          <dd class="col-sm-8">${result.publisher ? result.publisher[0] : "Author not found"}</dd>
+
+          <dt class="col-sm-6">Publication Date:</dt>
+          <dd class="col-sm-6">${result.publish_date ? result.publish_date[0] : "Published date not found"}</dd>
 
           <dt class="col-sm-6">First Publish Year:</dt>
           <dd class="col-sm-6">${result.first_publish_year ? result.first_publish_year : " Date not found"}</dd>
@@ -79,7 +90,7 @@ const displayResults = (results) => {
       allResultsDiv.appendChild(div);
     }
   });
-  //hide spinner
+  //hide spinner & show results
   toggleSpinner("none");
   toggleSearchResult("block");
 };
