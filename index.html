@@ -19,26 +19,22 @@
         </div>
 
         <!-- loader div  -->
-        <div id="loader" class="text-center">
+        <div id="spinner" class="text-center" style="display: none">
           <div class="spinner-border" role="status">
             <span class="visually-hidden">Loading...</span>
           </div>
         </div>
 
         <!-- error message  -->
-        <div id="error-box">
-          <h5 class="text-center">No Results Found!</h5>
-        </div>
+        <div id="error-box"></div>
       </section>
-
       <!-- show search results -->
-      <section class="search-results">
+      <section class="search-results" id="search-results">
         <!-- total results found -->
         <div id="total-results"></div>
 
         <!-- show founds results  -->
-        <div class="row row-cols-1 row-cols-md-3 g-4" id="all-results">
-        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="all-results"></div>
       </section>
     </main>
     <script src="main.js"></script>
