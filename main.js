@@ -72,6 +72,7 @@ const displayResults = (results) => {
         <dl class="row">
           <dt class="col-md-5">BookName:</dt>
           <dd class="col-md-7">${result.title}</dd>
+          <hr>
           <dt class="col-md-5">Author:</dt>
           <dd class="col-md-7">${result.author_name ? result.author_name[0] : "Author not found"}</dd>
           <hr />
